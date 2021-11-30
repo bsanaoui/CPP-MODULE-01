@@ -1,0 +1,28 @@
+// ---------------- Constructors & Destructors ----------- //
+
+// ----------------- Getters & Setters ------------------- //
+
+// ------------------ Member Functions ------------------- //
+
+// ------------------ Static Functions ------------------- //
+
+
+
+
+    switch (get_enum(level))
+    {
+    case DEBUG:
+        debug();
+        break;
+    case INFO:
+        info();
+        break;
+    case WARNING:
+        warning();
+        break;
+    case ERROR:
+        error();
+        break;
+    default:
+        break;
+    }

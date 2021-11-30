@@ -1,0 +1,49 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+int main(int argc, char *argv[])
+{
+    // ----------------   Check Errors --------------------- //
+
+    if (argc != 4)
+    {
+        std::cout << "Error ! Please specifiy a File, String1 and String2" << std::endl;
+        return (0);
+    }
+    else if (*argv[2] == '\0' || *argv[3] == '\0')
+    {
+        std::cout << "Error ! String is empty" << std::endl;
+        return (0);
+    }
+    
+    // ----------------   Replace Strings with File --------------------- //
+
+    std::string s1 = std::string(argv[2]);
+    std::string s2 = std::string(argv[3]);
+    std::fstream file(argv[1], std::ios::in | std::ios::out);
+
+    if (!file.is_open())
+        return (0);
+
+    
+    // size_t  pos;
+    // int     n_line = 0;
+    std::string line;
+    std::string buf;
+    while (getline(file, line))
+    {
+        // if ((pos = line.find(s1, 0)) != std::string::npos) // if not found == nops max size_t
+        //     std::cout << s1 << " is Exist at posistion " << n_line << ":" << pos << std::endl;
+        // n_line++;
+        buf.append("\n");
+        buf.append(line);
+    }
+    std::cout << buf << std::endl;
+    // file.seekg(6, std::ios::beg);
+    // std::cout << (char)file.get() << std::endl;
+    // char A[6];
+    // file.read(A, 5);
+    // A[5] = 0;
+    // std::cout << A << std::endl;
+    file.close();
